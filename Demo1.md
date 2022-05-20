@@ -2,25 +2,25 @@
 
 ### 顶点缓冲对象 (Vertex Buffer Object：VBO)：
 
-> *作用：*通过顶点缓冲对象存储顶点数据。
+> 作用：通过顶点缓冲对象存储顶点数据。
 >
-> *缓冲类型：*GL_ARRAY_BUFFER
+> 缓冲类型：GL_ARRAY_BUFFER
 
 
 
 ### 顶点数组对象（Vertex Array Object：VAO）：
 
-> *作用：*存放顶点结构的定义（不存放数据）。
+> 作用：存放顶点结构的定义（不存放数据）。
 >
-> *缓冲类型：*类型唯一（不指定类型）。
+> 缓冲类型：类型唯一（不指定类型）。
 
 
 
 ### 索引缓冲对象（Element Buffer Object：EBO）：
 
-> *作用：*存放缓冲索引（用于读取VBO）。
+> 作用：存放缓冲索引（用于读取VBO）。
 >
-> *缓冲类型：*GL_ELEMENT_ARRAY_BUFFER
+> 缓冲类型：GL_ELEMENT_ARRAY_BUFFER
 
 
 
