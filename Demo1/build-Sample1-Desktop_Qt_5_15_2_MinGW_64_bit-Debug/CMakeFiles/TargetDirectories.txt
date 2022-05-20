@@ -1,5 +1,0 @@
-H:/MyOpenGLPro/Demo1/build-Sample1-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/Sample1.dir
-H:/MyOpenGLPro/Demo1/build-Sample1-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-H:/MyOpenGLPro/Demo1/build-Sample1-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-H:/MyOpenGLPro/Demo1/build-Sample1-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/Sample1_autogen_timestamp_deps.dir
-H:/MyOpenGLPro/Demo1/build-Sample1-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/CMakeFiles/Sample1_autogen.dir
