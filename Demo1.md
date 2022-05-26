@@ -118,7 +118,7 @@ void glWidget::paintGL() {
 }
 
 ```
-
+***
 ## 2 ：窗口控件：
 
 一个OpenGL窗口控件需要重载的函数：
@@ -128,4 +128,5 @@ virtual void initializeGL();
 virtual void resizeGL(int w, int h);
 virtual void paintGL();
 ```
-
+***
+## 3：Shader
