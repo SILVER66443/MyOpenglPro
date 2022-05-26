@@ -3,18 +3,27 @@
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_4_4_Core>
+#include <QOpenGLShaderProgram>
 
 class glwidget : public QOpenGLWidget, QOpenGLFunctions_4_4_Core {
     Q_OBJECT
 public:
-    explicit glwidget(QWidget *parent = nullptr);
+    enum Shape { None, Rect, Circle, Triangle };
 
-    unsigned int VAO, VBO;
+    explicit glwidget(QWidget *parent = nullptr);
+    ~glwidget();
+
+    void drawShape(Shape shape);
+    void setPolygon(bool isPolygon);
 
 protected:
     virtual void initializeGL();
     virtual void resizeGL(int w, int h);
     virtual void paintGL();
+
+private:
+    Shape m_shape;
+    QOpenGLShaderProgram shaderProgram;
 };
 
 #endif // GLWIDGET_H

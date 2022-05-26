@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget::checked{background-color:rgb(150,150,150);}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="glwidget" name="openGLWidget">
     <property name="geometry">
@@ -66,15 +69,24 @@
    </attribute>
    <addaction name="actDrawRect"/>
    <addaction name="actClear"/>
+   <addaction name="actWireFrame"/>
   </widget>
   <action name="actDrawRect">
    <property name="text">
-    <string>drawRect</string>
+    <string>DrawRect</string>
    </property>
   </action>
   <action name="actClear">
    <property name="text">
     <string>Clear</string>
+   </property>
+  </action>
+  <action name="actWireFrame">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>SetWireFrame</string>
    </property>
   </action>
  </widget>

@@ -27,6 +27,7 @@ class Ui_MainWindow
 public:
     QAction *actDrawRect;
     QAction *actClear;
+    QAction *actWireFrame;
     QWidget *centralwidget;
     glwidget *openGLWidget;
     QMenuBar *menubar;
@@ -41,10 +42,14 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
+        MainWindow->setStyleSheet(QString::fromUtf8("QWidget::checked{background-color:rgb(150,150,150);}"));
         actDrawRect = new QAction(MainWindow);
         actDrawRect->setObjectName(QString::fromUtf8("actDrawRect"));
         actClear = new QAction(MainWindow);
         actClear->setObjectName(QString::fromUtf8("actClear"));
+        actWireFrame = new QAction(MainWindow);
+        actWireFrame->setObjectName(QString::fromUtf8("actWireFrame"));
+        actWireFrame->setCheckable(true);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         openGLWidget = new glwidget(centralwidget);
@@ -73,6 +78,7 @@ public:
         menubar->addAction(menu_3->menuAction());
         toolBar->addAction(actDrawRect);
         toolBar->addAction(actClear);
+        toolBar->addAction(actWireFrame);
 
         retranslateUi(MainWindow);
 
@@ -82,8 +88,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        actDrawRect->setText(QCoreApplication::translate("MainWindow", "drawRect", nullptr));
+        actDrawRect->setText(QCoreApplication::translate("MainWindow", "DrawRect", nullptr));
         actClear->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
+        actWireFrame->setText(QCoreApplication::translate("MainWindow", "SetWireFrame", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\350\217\234\345\215\225", nullptr));
         menu_2->setTitle(QCoreApplication::translate("MainWindow", "\347\274\226\350\276\221", nullptr));
         menu_3->setTitle(QCoreApplication::translate("MainWindow", "\345\270\256\345\212\251", nullptr));

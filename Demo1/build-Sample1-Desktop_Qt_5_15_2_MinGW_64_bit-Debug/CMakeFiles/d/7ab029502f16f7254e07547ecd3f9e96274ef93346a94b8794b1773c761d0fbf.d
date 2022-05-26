@@ -13,7 +13,9 @@ Sample1_autogen/timestamp: \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainerfwd.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainertools_impl.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontiguouscache.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatastream.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qflags.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qgenericatomic.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
@@ -24,6 +26,7 @@ Sample1_autogen/timestamp: \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qline.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qlist.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qlocale.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qlogging.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qmap.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qmargins.h \
@@ -41,6 +44,7 @@ Sample1_autogen/timestamp: \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qregexp.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qscopedpointer.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qset.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer_impl.h \
@@ -55,12 +59,14 @@ Sample1_autogen/timestamp: \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qsystemdetection.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qt_windows.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcore-config.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtCore/qtextstream.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qtypeinfo.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qvariant.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qvarlengtharray.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qvector.h \
   C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/QOpenGLFunctions_4_4_Core \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/QOpenGLShaderProgram \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/QOpenGLVersionFunctions \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/QSurfaceFormat \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qbrush.h \
@@ -69,20 +75,24 @@ Sample1_autogen/timestamp: \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qfont.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontinfo.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontmetrics.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qgenericmatrix.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qimage.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qkeysequence.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qmatrix.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qmatrix4x4.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qopengl.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qopenglcontext.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qopenglext.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qopenglfunctions_4_4_core.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qopenglshaderprogram.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qopenglversionfunctions.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpaintdevice.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpalette.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpixelformat.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpixmap.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qpolygon.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qquaternion.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qregion.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qrgb.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qrgba64.h \
@@ -90,6 +100,9 @@ Sample1_autogen/timestamp: \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qtgui-config.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiglobal.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qtransform.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector3d.h \
+  C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector4d.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs.h \
   C:/Qt/5.15.2/mingw81_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMainWindow \
