@@ -129,4 +129,5 @@ virtual void resizeGL(int w, int h);
 virtual void paintGL();
 ```
 ***
-## 3：Shader
+## 3：Shader相关知识
+
