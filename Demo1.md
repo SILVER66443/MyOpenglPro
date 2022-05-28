@@ -100,6 +100,7 @@ int main() {
 }
 
 ```
+<<<<<<< HEAD
 
 ```C++
 //shader.h
@@ -201,6 +202,9 @@ private:
 
 
 
+=======
+***
+>>>>>>> 2b305a1ccf86e62634107090c4373c4b094a894b
 ## 2 ：窗口控件：
 
 一个OpenGL窗口控件需要重载的函数：
@@ -210,4 +214,6 @@ virtual void initializeGL();
 virtual void resizeGL(int w, int h);
 virtual void paintGL();
 ```
+***
+## 3：Shader相关知识
 
