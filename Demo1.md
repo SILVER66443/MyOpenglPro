@@ -27,97 +27,179 @@
 ### 代码
 
 ```C++
-// glWidget.h
-#ifndef GLWIDGET_H
-#define GLWIDGET_H
+// main.cpp
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <iostream>
+#include <shader/Shader.h>
 
-#include <QOpenGLWidget>
-#include <QOpenGLFunctions_4_5_Core>
+int main() {
+    GLFWwindow *window;
 
-class glWidget : public QOpenGLWidget, QOpenGLFunctions_4_5_Core {
-    Q_OBJECT
-public:
-    explicit glWidget(QWidget *parent = nullptr);
-protected:
-    virtual void initializeGL();
-    virtual void resizeGL(int w, int h);
-    virtual void paintGL();
-};
+    if (!glfwInit()) {
+        return -1;
+    }
 
-#endif // GLWIDGET_H
+    window = glfwCreateWindow(1024, 768, "chap1", NULL, NULL);
 
-```
+    glfwMakeContextCurrent(window);
 
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::cout << "Failed to load glad!\n";
+        return -1;
+    }
 
+    Shader shader(
+        "./src/chap_1/shaderFile/vertexShader.vert",
+        "./src/chap_1/shaderFile/fragShader.frag"
+        );
 
-```C++
-// glWidget.cpp
-#include "glwidget.h"
+    float vertices[] = {
+        -0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+        0.5f,   0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f,  -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+    };
 
-// 缓冲对象声明
-GLuint VAO, VBO, EBO;
-// 存放顶点信息
-float vertices[] = { 0.5f,   0.5f, 0.0f,
-                     -0.5f,  0.5f, 0.0f,
-                     -0.5f, -0.5f, 0.0f,
-                     0.5f,  -0.5f, 0.0f };
-// 存放索引信息
-int index[] = { 0, 1, 3,
-                1, 2, 3 };
+    unsigned int VBO, VAO;
 
-glWidget::glWidget(QWidget *parent) : QOpenGLWidget(parent) {
-}
-
-// 初始化窗口
-void glWidget::initializeGL() {
-    initializeOpenGLFunctions();
-
-    /* 创建对象 */
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
 
-    /* 绑定对象 */
     glBindVertexArray(VAO);
+
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-
-    /* 在缓冲区生成一个区域用于后续传入顶点数据 */
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(index), index, GL_STATIC_DRAW);
 
-    /* 指定显存缓冲区数据读取方式 */
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), NULL);
     glEnableVertexAttribArray(0);
 
-    /* 解绑 */
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
-    /* 切换绘制模式 */
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-}
+    while (!glfwWindowShouldClose(window)) {
+        if (glfwGetKey(window, (GLFW_KEY_ESCAPE == GLFW_PRESS))) {
+            glfwSetWindowShouldClose(window, true);
+        }
 
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
 
-void glWidget::resizeGL(int w, int h) {
-    Q_UNUSED(w);
-    Q_UNUSED(h);
-}
+        shader.actShader();
+        glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
-void glWidget::paintGL() {
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
 
-    glBindVertexArray(VAO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    // 使用索引缓冲对象的方式输出数据
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-    // 当没有绑定EVO的时候使用
-//    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, index);
-//    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+
+    glfwTerminate();
+    return 0;
 }
 
 ```
+
+```C++
+//shader.h
+#ifndef SHADER_H
+#define SHADER_H
+
+#include <glad/glad.h>
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+
+using namespace std;
+
+class Shader {
+public:
+    unsigned int ID;
+    
+    //* constructor
+    Shader(const char *vertexPath, const char *fragPath) {
+        /* read file */
+        string   vertexCode, fragCode;
+        ifstream vShaderFile, fShaderFile;
+        stringstream vShaderStream, fShaderStream;
+
+        vShaderFile.open(vertexPath);
+        fShaderFile.open(fragPath);
+
+        vShaderStream << vShaderFile.rdbuf();
+        fShaderStream << fShaderFile.rdbuf();
+
+        vShaderFile.close();
+        fShaderFile.close();
+
+        vertexCode = vShaderStream.str();
+        fragCode = fShaderStream.str();
+
+        const char* vShaderCode = vertexCode.c_str();
+        const char* fShaderCode = fragCode.c_str();
+
+        //* compile
+        unsigned int vertex, fragment;
+
+        vertex = glCreateShader(GL_VERTEX_SHADER);
+        glShaderSource(vertex, 1, &vShaderCode, NULL);
+        glCompileShader(vertex);
+
+        fragment = glCreateShader(GL_FRAGMENT_SHADER);
+        glShaderSource(fragment, 1, &fShaderCode, NULL);
+        glCompileShader(fragment);
+
+        //* shader program
+        this->ID = glCreateProgram();
+        glAttachShader(ID, vertex);
+        glAttachShader(ID, fragment);
+        glLinkProgram(ID);
+        // check error
+
+        glDeleteShader(vertex);
+        glDeleteShader(fragment);
+    }
+
+    //* activate shader
+    void actShader() {
+        glUseProgram(ID);
+    }
+
+private:
+    void checkCompileErrors(unsigned int shader, string type) {
+        int  suc;
+        char infoLog[1024];
+
+        if ("PROGRAM" != type) {
+            glGetShaderiv(shader, GL_COMPILE_STATUS, &suc);
+            if (!suc) {
+                glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+                cout << "ERROR::SHADER_COMPILATION_ERROR of type: " 
+                    << type << "\n" << infoLog 
+                    << "\n -- --------------------------------------------------- -- " 
+                    << std::endl;
+            }
+        }else  {
+            glGetProgramiv(shader, GL_LINK_STATUS, &suc);
+            if (!suc) {
+                glGetProgramInfoLog(shader,1024,NULL,infoLog);
+                cout << "ERROR::PROGRAM_LINKING_ERROR of type: " 
+                    << type << "\n" << infoLog 
+                    << "\n -- --------------------------------------------------- -- " 
+                    << std::endl;
+            }
+        }
+    }
+};
+
+#endif
+
+```
+
+
 
 ## 2 ：窗口控件：
 
