@@ -100,8 +100,6 @@ int main() {
 }
 
 ```
-<<<<<<< HEAD
-
 ```C++
 //shader.h
 #ifndef SHADER_H
@@ -200,11 +198,6 @@ private:
 
 ```
 
-
-
-=======
-***
->>>>>>> 2b305a1ccf86e62634107090c4373c4b094a894b
 ## 2 ：窗口控件：
 
 一个OpenGL窗口控件需要重载的函数：
@@ -217,3 +210,26 @@ virtual void paintGL();
 ***
 ## 3：Shader相关知识
 
+**概念：**shader程序的运行是基于渲染管线。
+
+不同shader之间的信息交互通过in变量和out变量来做。
+
+程序格式：
+
+```
+#version 330 core                      # 版本号
+layout (location = 0) in vec3 aPos;    # in变量
+layout (location = 1) in vec3 aColor;
+
+out vec3 ourColor;                     # out变量
+
+void main()
+{
+	# 处理输出数据
+    gl_Position = vec4(aPos, 1.0);
+    # 处理输出数据
+    ourColor = aColor;
+}
+```
+
+版本号 -> 输入数据声明 -> 输出数据声明
